@@ -5,16 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Page</title>
+    <style>
+      body {
+        /* pink to blue transition  background */
+        background: linear-gradient(
+          90deg,
+          rgba(255, 0, 0, 1) 0%,
+          rgba(0, 255, 255, 1) 100%
+        );
+      }
+      .img-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .img {
+        height: 200px;
+      }
+    </style>
   </head>
   <body>
-    <p>Hello, world!</p> 
-    <img src="https://keidarcy.github.io/images-host/images/IMG_2524.jpg" />
-    
-    <img src="https://keidarcy.github.io/images-host/images/IMG_2528.jpg" />
-    
-    <img src="https://keidarcy.github.io/images-host/images/IMG_2533.jpg" />
-    
-    <img src="https://keidarcy.github.io/images-host/images/IMG_2571.jpg" />
-    
+    <p>bao bao</p>
+    <div class="img-container">
+      
+      <img class="img" alt="food-https://keidarcy.github.io/images-host/images/IMG_2524.jpg" src="https://keidarcy.github.io/images-host/images/IMG_2524.jpg" />
+      
+      <img class="img" alt="food-https://keidarcy.github.io/images-host/images/IMG_2528.jpg" src="https://keidarcy.github.io/images-host/images/IMG_2528.jpg" />
+      
+      <img class="img" alt="food-https://keidarcy.github.io/images-host/images/IMG_2533.jpg" src="https://keidarcy.github.io/images-host/images/IMG_2533.jpg" />
+      
+      <img class="img" alt="food-https://keidarcy.github.io/images-host/images/IMG_2571.jpg" src="https://keidarcy.github.io/images-host/images/IMG_2571.jpg" />
+      
+    </div>
   </body>
 </html>

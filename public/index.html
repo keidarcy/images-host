@@ -5,10 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ .Title}}</title>
+    <style>
+      body {
+        /* pink to blue transition  background */
+        background: linear-gradient(
+          90deg,
+          rgba(255, 0, 0, 1) 0%,
+          rgba(0, 255, 255, 1) 100%
+        );
+      }
+      .img-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .img {
+        height: 200px;
+      }
+    </style>
   </head>
   <body>
-    {{ .Body}} {{range .Images}}
-    <img src="{{.}}" />
-    {{end}}
+    <p>bao bao</p>
+    <div class="img-container">
+      {{range .Images}}
+      <img class="img" alt="food-{{.}}" src="{{.}}" />
+      {{end}}
+    </div>
   </body>
 </html>
