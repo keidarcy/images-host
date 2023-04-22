@@ -11,9 +11,9 @@ import (
 )
 
 type PageData struct {
-	Title  string
-	Body   string
-	Images []string
+	Title    string
+	ImgUrl   string
+	ImgNames []string
 }
 
 type GithubTreeResponse struct {
@@ -23,7 +23,7 @@ type GithubTreeResponse struct {
 }
 
 func main() {
-	file, err := os.Open("./public/index.html")
+	file, err := os.Open("./public/index.tpl")
 	if err != nil {
 		panic(err)
 	}
@@ -53,22 +53,22 @@ func main() {
 		return
 	}
 
-	var jpgPaths []string
+	var imgNames []string
 	for _, node := range tree.Tree {
 		if strings.HasSuffix(node.Path, ".jpg") {
-			jpgPaths = append(jpgPaths, "https://keidarcy.github.io/images-host/"+node.Path)
+			imgNames = append(imgNames, node.Path)
 		}
 	}
 
-	title := "My Page"
+	title := "My favorite recipes 👩‍🍳 🍳"
 	data := PageData{
-		Title:  title,
-		Body:   "<p>Hello, world!</p>",
-		Images: jpgPaths,
+		Title:    title,
+		ImgUrl:   "https://keidarcy.github.io/images-host/",
+		ImgNames: imgNames,
 	}
 	tmpl := template.Must(template.New("html").Parse(htmlString))
 
-	newFile, _ := os.Create("output.html")
+	newFile, _ := os.Create("./public/output.html")
 
 	err = tmpl.Execute(newFile, data)
 
