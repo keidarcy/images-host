@@ -56,14 +56,15 @@ func main() {
 	var imgNames []string
 	for _, node := range tree.Tree {
 		if strings.HasSuffix(node.Path, ".jpg") {
-			imgNames = append(imgNames, node.Path)
+			imgNames = append(imgNames, node.Path[7:]+"?w=300&h=300&fit=crop")
 		}
 	}
 
 	title := "My favorite recipes 👩‍🍳 🍳"
+	fmt.Println(imgNames)
 	data := PageData{
 		Title:    title,
-		ImgUrl:   "https://keidarcy.github.io/images-host/",
+		ImgUrl:   "https://keidarcy.imgix.net/",
 		ImgNames: imgNames,
 	}
 	tmpl := template.Must(template.New("html").Parse(htmlString))

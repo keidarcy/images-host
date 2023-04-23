@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	images.forEach(function(img) {
 		img.addEventListener('click', function() {
 			const imgSrc = img.getAttribute('src');
-			fullscreenImage.setAttribute('src', imgSrc);
+      const url = new URL(imgSrc)
+      console.log('url:', url);
+      
+			fullscreenImage.setAttribute('src', url.origin + url.pathname + '?fit=fill&w=400&h=800');
 			fullscreenOverlay.style.display = 'flex';
 			fullscreenOverlay.classList.remove('fadeOut');
 		});

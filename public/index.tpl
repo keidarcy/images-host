@@ -24,7 +24,7 @@
           loading="lazy" 
           class="img js-img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -32,7 +32,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -40,7 +40,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -48,7 +48,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -56,7 +56,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -64,7 +64,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -72,7 +72,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -80,7 +80,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -88,7 +88,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -96,7 +96,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -104,7 +104,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -112,7 +112,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -120,7 +120,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -128,7 +128,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -136,7 +136,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
       {{ range.ImgNames }} 
@@ -144,7 +144,7 @@
           loading="lazy" 
           class="img" 
           alt="food-{{.}}" 
-          src="{{$.ImgUrl}}{{.}}" 
+          src="{{$.ImgUrl}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
     </main>
