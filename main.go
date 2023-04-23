@@ -69,7 +69,7 @@ func main() {
 	}
 	tmpl := template.Must(template.New("html").Parse(htmlString))
 
-	newFile, _ := os.Create("./public/output.html")
+	newFile, _ := os.Create("./public/index.html")
 
 	err = tmpl.Execute(newFile, data)
 
