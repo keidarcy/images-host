@@ -16,18 +16,16 @@
 
   <body>
     <h1>What's today's food</h1>
-    <button class="magic-button"><span>Magic</span></button>
+    <button class="pick-button"><span>Pick</span></button>
   <main>
     <div class="img-container">
       {{ range.ImgNames }} 
-      <div class="img-div">
         <img 
           loading="lazy" 
           class="img js-img" 
           alt="food-{{.}}" 
           src="{{$.ImgUrl}}{{.}}" 
         /> 
-      </div>
       {{ end }}
       {{ range.ImgNames }} 
         <img 

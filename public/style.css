@@ -4,8 +4,7 @@
 }
 
 body {
-  background-color: #4158d0;
-  background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  background-color: #ffcc70;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -40,17 +39,18 @@ main {
   flex-wrap: wrap;
   gap: 20px;
   @media screen and (max-width: 768px) {
-    gap: 20px;
+    gap: 15px;
   }
 }
 
 .img {
-  height: 400px;
+  width: 300px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  /* in mobile screen width is half */
   @media screen and (max-width: 768px) {
-    height: 200px;
+    width: 150px;
   }
 }
 
@@ -130,8 +130,8 @@ main {
   }
 }
 
-/* button */
-.magic-button {
+/* pick button */
+.pick-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,53 +143,26 @@ main {
   padding: 20px;
   border-radius: 99%;
   cursor: pointer;
+  font-size: 20px;
   background-color: rgba(100, 32, 163, 0.877);
   margin: auto;
   height: 60px;
+  color: burlywood;
   width: 60px;
   border: 2px gray solid;
-  clip-path: circle(20%);
   transition: 0.5s;
 }
 
-.magic-button:hover {
+.pick-button:hover {
   transition: 0.5s;
   clip-path: circle(100%);
   border: 2px purple solid;
+  color: purple;
   background: rgba(226, 180, 138, 0.925);
 }
 
-/* select the span inside .magic-button */
-
-.magic-button span{    
-  font-size: 20px;
-  color: burlywood;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  transition: 0.5s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.magic-button span:hover{
-  transition: 0.5s;
-  font-size: 15px;
-  color: purple;
-  transform: rotate(360deg);
-}
 
 /* image overlay */
 .pick {
   filter: sepia(1);
 }
-
-/* .pick::before {
-  content: '😋 ✅';
-  display: flex;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10px;
-} */

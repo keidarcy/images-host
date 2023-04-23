@@ -1,13 +1,12 @@
 let picked = false
-let pickedIndex
+let pickedIndex = -1
 document.addEventListener('DOMContentLoaded', function() {
-  const images = document.querySelectorAll('.js-img');
-  const imageDivs = document.querySelectorAll('.img-div');
+  const images = document.querySelectorAll('.img');
+  const pickButton = document.querySelector('.pick-button');
   const fullscreenOverlay = document.querySelector('.fullscreen-overlay');
   const fullscreenImageContainer = document.querySelector('.fullscreen-image-container');
   const fullscreenImage = fullscreenImageContainer.querySelector('img');
   const closeButton = fullscreenImageContainer.querySelector('.close-button');
-  const pickButton = document.querySelector('.magic-button');
 
   // handle click events on image containers
 	images.forEach(function(img) {
@@ -23,13 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
   // afeter click add pick class to a random image
   pickButton.addEventListener('click', function() {
     if (picked) {
-      imageDivs[pickedIndex].classList.remove('pick');
+      images[pickedIndex].classList.remove('pick');
+      picked = false
+      pickedIndex = -1
     }
-    const index = Math.floor(Math.random() * imageDivs.length)
-    const randomImage = imageDivs[index];
+    const index = Math.floor(Math.random() * images.length)
+    const randomImage = images[index];
     randomImage.classList.add('pick');
     pickedIndex = index
     picked = true
+
+
+    // scroll to the picked image
+    randomImage.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'center'
+    });
   });
 
 
