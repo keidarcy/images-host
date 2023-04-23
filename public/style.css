@@ -19,7 +19,7 @@ h1 {
   font-size: 20px;
   color: black;
   padding: 1%;
-  @media screen and (min-width: 428px) {
+  @media screen and (min-width: 1024px) {
     font-size: 50px;
   }
 }
@@ -38,7 +38,7 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  @media screen and (min-width: 428px) {
+  @media screen and (min-width: 1024px) {
     gap: 20px;
   }
 }
@@ -51,7 +51,7 @@ main {
   aspect-ratio: 1/1;
   object-fit: cover;
 
-  @media screen and (min-width: 428px) {
+  @media screen and (min-width: 1024px) {
     width: 300px;
   }
 }
