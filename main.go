@@ -56,7 +56,7 @@ func main() {
 	var imgNames []string
 	for _, node := range tree.Tree {
 		if strings.HasSuffix(node.Path, ".jpg") {
-			imgNames = append(imgNames, node.Path[7:]+"?w=300&h=300&fit=crop")
+			imgNames = append(imgNames, node.Path[7:])
 		}
 	}
 

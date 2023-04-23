@@ -19,7 +19,7 @@ h1 {
   text-align: center;
   color: black;
   padding: 1%;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 428px) {
     font-size: 20px;
   }
 }
@@ -38,7 +38,7 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 428px) {
     gap: 15px;
   }
 }
@@ -51,9 +51,7 @@ main {
   aspect-ratio: 1/1;
   object-fit: cover;
 
-  
-  /* in mobile screen width is half */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 428px) {
     width: 150px;
   }
 }
