@@ -56,7 +56,6 @@ func convert(name string) {
 	}
 
 	fo, err := os.OpenFile(targetPath, os.O_RDWR|os.O_CREATE, 0644)
-	fmt.Printf("fo: %v\n", fo)
 	if err != nil {
 		log.Fatalf("Failed to create output file %s: %v\n", targetPath, err)
 	}
