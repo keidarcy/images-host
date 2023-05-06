@@ -1,25 +1,26 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"html/template"
 	"io"
-	"net/http"
 	"os"
-	"strings"
-	"text/template"
+	"sort"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
+)
+
+const (
+	BUCKET_NAME = "super-food-gallery-2023"
+	IMGIX_URL   = "https://zzw-food-gallery.imgix.net/"
 )
 
 type PageData struct {
-	Title    string
-	ImgUrl   string
-	ImgNames []string
-}
-
-type GithubTreeResponse struct {
-	Tree []struct {
-		Path string `json:"path"`
-	} `json:"tree"`
+	Title     string
+	ImgOrigin string
+	ImgNames  []string
 }
 
 func main() {
@@ -37,35 +38,13 @@ func main() {
 
 	htmlString := string(htmlBytes)
 
-	url := "https://api.github.com/repos/keidarcy/images-host/git/trees/master?recursive=1"
+	images := getImages()
 
-	resp, err := http.Get(url)
-	if err != nil {
-		fmt.Println("Error while calling GitHub API:", err)
-		return
-	}
-	defer resp.Body.Close()
-
-	var tree GithubTreeResponse
-	err = json.NewDecoder(resp.Body).Decode(&tree)
-	if err != nil {
-		fmt.Println("Error while decoding response:", err)
-		return
-	}
-
-	var imgNames []string
-	for _, node := range tree.Tree {
-		if strings.HasSuffix(node.Path, ".jpg") {
-			imgNames = append(imgNames, node.Path[7:])
-		}
-	}
-
-	title := "My favorite recipes 👩‍🍳 🍳"
-	fmt.Println(imgNames)
+	title := "zzw's food gallery 👩‍🍳 🍳"
 	data := PageData{
-		Title:    title,
-		ImgUrl:   "https://keidarcy.imgix.net/",
-		ImgNames: imgNames,
+		Title:     title,
+		ImgOrigin: IMGIX_URL,
+		ImgNames:  images,
 	}
 	tmpl := template.Must(template.New("html").Parse(htmlString))
 
@@ -76,5 +55,35 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+}
 
+func getImages() []string {
+	sess, err := session.NewSession(&aws.Config{
+		Region: aws.String("ap-northeast-1"),
+	})
+
+	if err != nil {
+		exitErrorf("new s3 session failed")
+	}
+
+	svc := s3.New(sess)
+
+	resp, err := svc.ListObjectsV2(&s3.ListObjectsV2Input{Bucket: aws.String(BUCKET_NAME)})
+	if err != nil {
+		exitErrorf("Unable to list items in bucket %q, %v", BUCKET_NAME, err)
+	}
+
+	images := []string{}
+	for _, item := range resp.Contents {
+		images = append(images, *item.Key)
+	}
+	fmt.Printf("images: %v\n", images[:5])
+	sort.Strings(images)
+	fmt.Printf("images: %v\n", images[:5])
+	return images
+}
+
+func exitErrorf(msg string, args ...interface{}) {
+	fmt.Fprintf(os.Stderr, msg+"\n", args...)
+	os.Exit(1)
 }
