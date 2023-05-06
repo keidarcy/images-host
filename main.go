@@ -77,9 +77,7 @@ func getImages() []string {
 	for _, item := range resp.Contents {
 		images = append(images, *item.Key)
 	}
-	fmt.Printf("images: %v\n", images[:5])
 	sort.Strings(images)
-	fmt.Printf("images: %v\n", images[:5])
 	return images
 }
 
