@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     img.addEventListener('click', function () {
       const imgSrc = img.getAttribute('src');
       const url = new URL(imgSrc);
-      console.log('url:', url);
 
       fullscreenImage.setAttribute(
         'src',
