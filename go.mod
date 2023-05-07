@@ -1,4 +1,4 @@
-module github.com/keidarcy/images-host
+module github.com/keidarcy/zzw-food-gallery
 
 go 1.19
 

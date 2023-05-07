@@ -1,4 +1,4 @@
-package main
+package util
 
 import (
 	"fmt"
@@ -11,12 +11,7 @@ import (
 	"github.com/jdeng/goheif"
 )
 
-const (
-	HEIC_DIR = "./heic-images"
-	JPEG_DIR = "./jpeg-images"
-)
-
-func main() {
+func Convert() {
 	heics, err := os.ReadDir(HEIC_DIR)
 
 	if err != nil {
@@ -31,12 +26,12 @@ func main() {
 			if !strings.HasSuffix(name, "heic") {
 				continue
 			}
-			convert(name[:len(name)-5])
+			doConvert(name[:len(name)-5])
 		}
 	}
 }
 
-func convert(name string) {
+func doConvert(name string) {
 	sourcePath := fmt.Sprintf("%s/%s.HEIC", HEIC_DIR, name)
 	targetPath := fmt.Sprintf("%s/%s.jpeg", JPEG_DIR, name)
 
@@ -56,6 +51,7 @@ func convert(name string) {
 	}
 
 	fo, err := os.OpenFile(targetPath, os.O_RDWR|os.O_CREATE, 0644)
+	fmt.Printf("fo: %v\n", fo)
 	if err != nil {
 		log.Fatalf("Failed to create output file %s: %v\n", targetPath, err)
 	}
