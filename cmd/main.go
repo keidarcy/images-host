@@ -23,8 +23,9 @@ func main() {
 		util.Upload()
 		// remove heic and jpg
 		util.Clean()
+	} else {
+		// get from s3
+		// render html
+		util.Render()
 	}
-	// get from s3
-	// render html
-	util.Render()
 }

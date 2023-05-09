@@ -39,6 +39,7 @@ jobs:
       - name: Build
         run: |
           go run cmd/main.go ci
+          ls public -la
   # Single deploy job since we're just deploying
   deploy:
     needs: build
