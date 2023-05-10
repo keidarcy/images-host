@@ -44,3 +44,4 @@ go.work
 # images
 heic-images
 jpeg-images
+public/index.html

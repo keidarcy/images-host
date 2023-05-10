@@ -5,6 +5,7 @@ import (
 	"os"
 	"sort"
 	"text/template"
+	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -15,6 +16,7 @@ type PageData struct {
 	Title     string
 	ImgOrigin string
 	ImgNames  []string
+	BuildTime string
 }
 
 func Render() {
@@ -40,6 +42,7 @@ func Render() {
 		Title:     title,
 		ImgOrigin: IMGIX_URL,
 		ImgNames:  images,
+		BuildTime: time.Now().Format(time.RFC3339),
 	}
 	tmpl := template.Must(template.New("html").Parse(htmlString))
 
