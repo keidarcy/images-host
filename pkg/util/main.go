@@ -5,12 +5,12 @@ import (
 	"os"
 )
 
-const (
+var (
 	DOWNLOAD_DIR = "Downloads"
 	HEIC_DIR     = "./heic-images"
 	JPEG_DIR     = "./jpeg-images"
+	IMGIX_URL    = os.Getenv("IMGIX_URL")
 	BUCKET_NAME  = "super-food-gallery-2023"
-	IMGIX_URL    = "https://zzw-food-gallery.imgix.net/"
 	AWS_REGION   = "ap-northeast-1"
 )
 

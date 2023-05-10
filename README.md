@@ -11,7 +11,7 @@
     - upload to s3
     - clean up local files
 - ci
-  - push code
+  - push code/scheduled trigger
   - `go run cmd/main.go ci`
     - list s3 bucket
     - render html
