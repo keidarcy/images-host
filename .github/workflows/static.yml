@@ -41,6 +41,9 @@ jobs:
           go run cmd/main.go ci
           ls public -la
           pwd
+          echo $IMGIX_URL
+        env:
+          IMGIX_URL: ${{ vars.IMGIX_URL }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
