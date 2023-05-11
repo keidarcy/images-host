@@ -20,7 +20,8 @@ var (
 
 func init() {
 	err := godotenv.Load()
-	if err != nil {
+
+	if err != nil && !os.IsNotExist(err) {
 		log.Fatal("Error loading .env file")
 	}
 	IMGIX_URL = os.Getenv("IMGIX_URL")
