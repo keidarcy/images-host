@@ -45,3 +45,4 @@ go.work
 heic-images
 jpeg-images
 public/index.html
+.env

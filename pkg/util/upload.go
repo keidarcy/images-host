@@ -37,14 +37,14 @@ func doUpload(uploader *s3manager.Uploader, filename string) {
 	defer file.Close()
 
 	_, err = uploader.Upload(&s3manager.UploadInput{
-		Bucket: aws.String(BUCKET_NAME),
+		Bucket: aws.String(AWS_BUCKET_NAME),
 		Key:    aws.String(filename),
 		Body:   file,
 	})
 	if err != nil {
 		// Print the error and exit.
-		exitErrorf("Unable to upload %q to %q, %v", filename, BUCKET_NAME, err)
+		exitErrorf("Unable to upload %q to %q, %v", filename, AWS_BUCKET_NAME, err)
 	}
 
-	fmt.Printf("Successfully uploaded %q to %q\n", filename, BUCKET_NAME)
+	fmt.Printf("Successfully uploaded %q to %q\n", filename, AWS_BUCKET_NAME)
 }

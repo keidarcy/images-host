@@ -46,10 +46,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // handle click event on close button
-  closeButton.addEventListener('click', function () {
+  closeButton.addEventListener('click', closePopup);
+
+  function closePopup() {
     fullscreenOverlay.classList.add('fadeOut');
     setTimeout(function () {
       fullscreenOverlay.style.display = 'none';
     }, 330);
-  });
+  }
 });

@@ -37,7 +37,7 @@ func Render() {
 
 	images := getImages()
 
-	title := "zzw's food gallery 👩‍🍳 🍳"
+	title := TITLE
 	data := PageData{
 		Title:     title,
 		ImgOrigin: IMGIX_URL,
@@ -56,7 +56,7 @@ func Render() {
 }
 func getImages() []string {
 	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String("ap-northeast-1"),
+		Region: aws.String(AWS_REGION),
 	})
 
 	if err != nil {
@@ -65,9 +65,9 @@ func getImages() []string {
 
 	svc := s3.New(sess)
 
-	resp, err := svc.ListObjectsV2(&s3.ListObjectsV2Input{Bucket: aws.String(BUCKET_NAME)})
+	resp, err := svc.ListObjectsV2(&s3.ListObjectsV2Input{Bucket: aws.String(AWS_BUCKET_NAME)})
 	if err != nil {
-		exitErrorf("Unable to list items in bucket %q, %v", BUCKET_NAME, err)
+		exitErrorf("Unable to list items in bucket %q, %v", AWS_BUCKET_NAME, err)
 	}
 
 	images := []string{}

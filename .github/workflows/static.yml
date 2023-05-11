@@ -42,6 +42,8 @@ jobs:
           go run cmd/main.go ci
         env:
           IMGIX_URL: ${{ vars.IMGIX_URL }}
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          AWS_BUCKET_NAME: ${{ vars.AWS_BUCKET_NAME }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
