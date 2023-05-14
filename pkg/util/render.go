@@ -2,20 +2,25 @@ package util
 
 import (
 	"io"
+	"log"
 	"os"
-	"sort"
 	"text/template"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/keidarcy/zzw-food-gallery/pkg/db"
 )
+
+type Img struct {
+	URL  string
+	Name string
+}
 
 type PageData struct {
 	Title     string
 	ImgOrigin string
-	ImgNames  []string
+	Images    []Img
 	BuildTime string
 }
 
@@ -35,13 +40,16 @@ func Render() {
 
 	htmlString := string(htmlBytes)
 
-	images := getImages()
+	images, err := getImages()
+	if err != nil {
+		exitErrorf("failed to get images %v", err)
+	}
 
 	title := TITLE
 	data := PageData{
 		Title:     title,
 		ImgOrigin: IMGIX_URL,
-		ImgNames:  images,
+		Images:    images,
 		BuildTime: time.Now().Format(time.RFC3339),
 	}
 	tmpl := template.Must(template.New("html").Parse(htmlString))
@@ -54,26 +62,50 @@ func Render() {
 		exitErrorf("failed to execute template", err)
 	}
 }
-func getImages() []string {
+
+// func getImages() []string {
+// 	sess, err := session.NewSession(&aws.Config{
+// 		Region: aws.String(AWS_REGION),
+// 	})
+
+// 	if err != nil {
+// 		exitErrorf("new s3 session failed")
+// 	}
+
+// 	svc := s3.New(sess)
+
+// 	resp, err := svc.ListObjectsV2(&s3.ListObjectsV2Input{Bucket: aws.String(AWS_BUCKET_NAME)})
+// 	if err != nil {
+// 		exitErrorf("Unable to list items in bucket %q, %v", AWS_BUCKET_NAME, err)
+// 	}
+
+// 	images := []string{}
+// 	for _, item := range resp.Contents {
+// 		images = append(images, *item.Key)
+// 	}
+// 	sort.Strings(images)
+// 	return images
+// }
+
+func getImages() ([]Img, error) {
 	sess, err := session.NewSession(&aws.Config{
 		Region: aws.String(AWS_REGION),
 	})
-
 	if err != nil {
-		exitErrorf("new s3 session failed")
+		log.Fatal("failed new session")
 	}
-
-	svc := s3.New(sess)
-
-	resp, err := svc.ListObjectsV2(&s3.ListObjectsV2Input{Bucket: aws.String(AWS_BUCKET_NAME)})
+	items, err := db.GetItems(sess, AWS_TABLE_NAME)
+	imgs := []Img{}
+	for _, item := range items {
+		img := Img{
+			Name: item.Name,
+			URL:  item.URL,
+		}
+		imgs = append(imgs, img)
+	}
 	if err != nil {
-		exitErrorf("Unable to list items in bucket %q, %v", AWS_BUCKET_NAME, err)
+		log.Fatal("failed get items")
 	}
 
-	images := []string{}
-	for _, item := range resp.Contents {
-		images = append(images, *item.Key)
-	}
-	sort.Strings(images)
-	return images
+	return imgs, nil
 }
