@@ -44,6 +44,7 @@ jobs:
           IMGIX_URL: ${{ vars.IMGIX_URL }}
           AWS_REGION: ${{ vars.AWS_REGION }}
           AWS_BUCKET_NAME: ${{ vars.AWS_BUCKET_NAME }}
+          AWS_TABLE_NAME: ${{ vars.AWS_TABLE_NAME }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
