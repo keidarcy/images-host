@@ -21,12 +21,12 @@
     <button class="pick-button"><span>Pick</span></button>
   <main>
     <div class="img-container">
-      {{ range.Images }} 
+      {{ range.ImgNames }} 
         <img 
           loading="lazy" 
           class="img js-img" 
-          alt="food-{{.Name}}-{{.URL}}" 
-          src="{{$.ImgOrigin}}{{.URL}}?w=300&h=300&fit=crop" 
+          alt="food-{{.}}" 
+          src="{{$.ImgOrigin}}{{.}}?w=300&h=300&fit=crop" 
         /> 
       {{ end }}
     </main>
