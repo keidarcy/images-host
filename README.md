@@ -6,12 +6,12 @@
 
 - local
   - airdrop heic from iphone to mac
-  - `go run cmd/main.go -`
+  - `go run cmd/main.go`
     - convert heic to jpg
     - upload to s3
     - clean up local files
 - ci
-  - push code/scheduled trigger
+  - push code or trigger scheduled job
   - `go run cmd/main.go ci`
     - list s3 bucket
     - render html
