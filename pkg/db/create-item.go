@@ -45,8 +45,13 @@ func GetItems(sess *session.Session, tableName string) ([]*Item, error) {
 	// result, _ := svc.Scan(input)
 	// fmt.Printf("result: %v\n", result)
 
+	count := 0
 	err := svc.ScanPages(input, func(page *dynamodb.ScanOutput, lastPage bool) bool {
 		for _, item := range page.Items {
+			count++
+			if count > 2 {
+				return false
+			}
 			var itemData Item
 			err := dynamodbattribute.UnmarshalMap(item, &itemData)
 			if err != nil {
