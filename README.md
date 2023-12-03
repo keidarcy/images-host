@@ -10,7 +10,7 @@
     - convert heic to jpg
     - upload to s3
     - clean up local files
-- ci
+- [ci](./.github/workflows/static.yml)
   - push code or trigger scheduled job
   - `go run cmd/main.go ci`
     - list s3 bucket
